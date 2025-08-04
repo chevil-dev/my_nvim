@@ -19,11 +19,17 @@ A clean, fast, and fully modular Neovim configuration written in Lua, tailored f
 
 my_nvim/
 ├── init.lua # Entry point, loads the lua modules
+
 ├── lua/
+
 │ ├── core/ # Core settings (options, keymaps, autocmds)
+
 │ ├── plugins/ # Plugin specs organized by category
+
 │ └── utils/ # Custom utility functions
+
 ├── lazy-lock.json # Plugin lockfile (for reproducible builds)
+
 └── README.md
 
 
