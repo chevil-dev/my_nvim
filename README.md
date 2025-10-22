@@ -1,4 +1,7 @@
 # my_nvim
+[![Neovim](https://img.shields.io/badge/Neovim-0.8%2B-blue)](https://neovim.io/)
+[![License](https://img.shields.io/badge/License-MIT-green)](https://github.com/chevil-dev/my_nvim/blob/main/LICENSE)
+[![Stars](https://img.shields.io/github/stars/chevil-dev/my_nvim?style=social)](https://github.com/chevil-dev/my_nvim/stargazers)
 
 A clean, fast, and fully modular Neovim configuration written in Lua, tailored for developers who want a productive and extensible workflow.
 
