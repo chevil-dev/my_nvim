@@ -54,7 +54,25 @@ Make sure you have the following tools:
 - [Nerd Font](https://www.nerdfonts.com/) (e.g., FiraCode Nerd Font)
 
 ### 2. Install the Config
-
+#### 1.Clone the repository to your Neovim configuration directory:
 ```bash
 git clone https://github.com/chevil-dev/my_nvim.git ~/.config/nvim
 nvim
+```
+#### 2.Launch Neovim and sync plugins:
+```vim
+:Lazy sync
+```
+#### 3.Restart Neovim to apply all configurations.
+
+## 🧩 Customization
+This configuration is fully modular:
+- Add or modify plugins in `lua/plugins/`.
+- Customize individual plugin settings in `lua/configs/`.
+- Keymaps and options are easy to adjust for personal workflow.
+## 🤝 Contributions
+Contributions are welcome!
+- Fork the repository
+- Make your changes
+- Submit a Pull Request
+Please ensure contributions maintain performance, modularity, and code clarity.
