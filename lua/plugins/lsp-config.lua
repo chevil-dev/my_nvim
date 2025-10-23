@@ -102,39 +102,28 @@ return {
     {
         "neovim/nvim-lspconfig",
         config = function()
-            local lspconfig = require("lspconfig")
             local capabilities = require("cmp_nvim_lsp").default_capabilities()
             local icons = require("configs.icons")
 
-            -- LSP servers
+            -- Modular LSP setup
             local servers = {
-                lua_ls = {},
-                pyright = {},
-                clangd = {},
-                cssls = {},
-                bashls = {},
-                jsonls = {},
-                html = {},
-                ts_ls = {},
+                "lua_ls",
+                "pyright",
+                "clangd",
+                "cssls",
+                "bashls",
+                "jsonls",
+                "html",
+                "tsserver", -- corrected from ts_ls
+                "jdtls"
             }
 
-            for name, opts in pairs(servers) do
-                opts.capabilities = capabilities
-                lspconfig[name].setup(opts)
+            for _, name in ipairs(servers) do
+                local ok, server = pcall(require, "configs.lsp." .. name)
+                if ok and server.setup then
+                    server.setup(capabilities)
+                end
             end
-
-            -- Java LSP setup (Arch compatible)
-            local jdtls_path = vim.fn.expand("~/.local/share/nvim/mason/packages/jdtls/bin/jdtls")
-            lspconfig.jdtls.setup({
-                cmd = {
-                    jdtls_path,
-                    "-configuration",
-                    vim.fn.expand("~/.cache/jdtls/config"),
-                    "-data",
-                    vim.fn.expand("~/.cache/jdtls/workspace"),
-                },
-                capabilities = capabilities,
-            })
 
             -- Diagnostics styling
             local signs = {
@@ -176,6 +165,7 @@ return {
             vim.keymap.set("n", "<leader>cD", vim.lsp.buf.declaration, { desc = "[C]ode [D]eclaration" })
         end,
     },
+
 
     -- Java meta package
     {
